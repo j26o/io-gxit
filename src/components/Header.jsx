@@ -14,10 +14,10 @@ function useTheme() {
   );
 
   function toggle() {
-    const next = !dark;
-    setDark(next);
+    const next = !document.documentElement.classList.contains('dark');
     document.documentElement.classList.toggle('dark', next);
     localStorage.setItem('theme', next ? 'dark' : 'light');
+    setDark(next);
   }
 
   return { dark, toggle };

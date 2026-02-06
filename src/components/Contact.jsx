@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const INITIAL = { name: '', email: '', company: '', message: '' };
 
@@ -18,6 +20,8 @@ export default function Contact() {
   const [form, setForm] = useState(INITIAL);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -27,18 +31,34 @@ export default function Contact() {
     }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const v = validate(form);
     if (Object.keys(v).length > 0) {
       setErrors(v);
       return;
     }
-    // Placeholder submit handler — replace with backend integration
-    console.log('Form submitted:', form);
-    setSubmitted(true);
-    setForm(INITIAL);
-    setErrors({});
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      await addDoc(collection(db, 'contacts'), {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        company: form.company.trim(),
+        message: form.message.trim(),
+        createdAt: serverTimestamp(),
+      });
+      setSubmitted(true);
+      setForm(INITIAL);
+      setErrors({});
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setSubmitError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const fieldClass = (name) =>
@@ -133,6 +153,12 @@ export default function Contact() {
                 noValidate
                 className="space-y-5 rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800 sm:p-8"
               >
+                {submitError && (
+                  <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400" role="alert">
+                    {submitError}
+                  </div>
+                )}
+
                 <div>
                   <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Name <span className="text-red-500">*</span>
@@ -144,6 +170,7 @@ export default function Contact() {
                     autoComplete="name"
                     value={form.name}
                     onChange={handleChange}
+                    disabled={submitting}
                     className={fieldClass('name')}
                     placeholder="Juan dela Cruz"
                   />
@@ -163,6 +190,7 @@ export default function Contact() {
                     autoComplete="email"
                     value={form.email}
                     onChange={handleChange}
+                    disabled={submitting}
                     className={fieldClass('email')}
                     placeholder="juan@company.com"
                   />
@@ -182,6 +210,7 @@ export default function Contact() {
                     autoComplete="organization"
                     value={form.company}
                     onChange={handleChange}
+                    disabled={submitting}
                     className={fieldClass('company')}
                     placeholder="Your company name"
                   />
@@ -197,6 +226,7 @@ export default function Contact() {
                     rows={4}
                     value={form.message}
                     onChange={handleChange}
+                    disabled={submitting}
                     className={fieldClass('message')}
                     placeholder="Tell us about your project or what you need help with..."
                   />
@@ -207,9 +237,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+                  disabled={submitting}
+                  className="w-full rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Send Message
+                  {submitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}

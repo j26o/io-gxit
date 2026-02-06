@@ -28,5 +28,13 @@
         ]
       }
     ]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20"
+  },
+  "firestore": {
+    "database": "gxit",
+    "rules": "firestore.rules"
   }
 }

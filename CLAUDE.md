@@ -11,7 +11,8 @@ Single-page portfolio website for **GenX IT Solutions, Inc.**, targeting small t
 - **Vite** (build tool)
 - **React 19** (JavaScript only — no TypeScript)
 - **Tailwind CSS v3** (utility-first styling)
-- **Deploy target:** Firebase Hosting
+- **Firebase** — Hosting, Firestore, Authentication, Cloud Functions v2
+- **react-router-dom** — Client-side routing (`/` and `/admin`)
 
 ## Commands
 
@@ -22,36 +23,58 @@ pnpm build            # Production build → dist/
 pnpm preview          # Preview production build locally
 ```
 
-### Firebase Hosting Deploy
+### Firebase Deploy
 
 ```bash
 pnpm build
-npx firebase login
-npx firebase init hosting   # Select "dist" as public dir, configure as SPA
-npx firebase deploy --only hosting
+firebase deploy                  # Deploys hosting + functions + firestore rules
+firebase deploy --only hosting   # Hosting only
+firebase deploy --only functions # Cloud Functions only
 ```
 
 ## Architecture
 
-Single-route SPA with no React Router. All sections render in `App.jsx` as a scrolling single page.
+SPA with two routes via react-router-dom:
+- `/` — Main portfolio page (all sections as a scrolling single page)
+- `/admin` — Auth-gated admin page for viewing contact submissions
 
 ### Component Structure
 
 ```
 src/
-  App.jsx              ← Root component, assembles all sections in order
-  main.jsx             ← React entry point
+  App.jsx              ← Routes: HomePage (/) and Admin (/admin)
+  main.jsx             ← React entry point, wraps App in BrowserRouter
   index.css            ← Tailwind directives + custom utility layers
+  firebase.js          ← Firebase SDK init (Firestore, Auth, GoogleAuthProvider)
   components/
-    Header.jsx         ← Sticky nav with mobile hamburger, scroll-aware bg
-    Hero.jsx           ← Full-height hero with CTAs
+    Header.jsx         ← Sticky nav with mobile hamburger, scroll-aware bg, dark mode toggle
+    Hero.jsx           ← Full-height hero with animated SVG beams background
+    BackgroundBeams.jsx← Animated SVG beam paths with gradient strokes
     Services.jsx       ← 6 service cards derived from cv.pdf capabilities
     FeaturedWork.jsx   ← Client highlights + name-badge grid from profile-deck.pdf
     ERPSpotlight.jsx   ← JPP logistics ERP case study from client.pdf
     About.jsx          ← Founder story + approach + core strengths
-    Contact.jsx        ← Form with client-side validation (placeholder submit)
+    Contact.jsx        ← Form with Firestore submission (addDoc to 'contacts' collection)
     Footer.jsx         ← Brand, social links, copyright
+  pages/
+    Admin.jsx          ← Google auth, admin allowlist, real-time submissions table
 ```
+
+### Cloud Functions
+
+```
+functions/
+  index.js             ← onDocumentCreated trigger on contacts/{docId} → email via Nodemailer
+  package.json         ← firebase-admin, firebase-functions, nodemailer
+  .env                 ← SMTP credentials (git-ignored)
+```
+
+### Firebase Configuration
+
+- `firebase.json` — Hosting (dist/), Functions (functions/), Firestore rules
+- `firestore.rules` — Public create on `contacts`, read restricted to admin allowlist
+- `.env.local` — Client-side Firebase config (VITE_FIREBASE_* keys, git-ignored)
+- Firestore database name: `gxit` (not the default)
 
 ### Key Design Decisions
 
@@ -60,6 +83,11 @@ src/
 - **Accent color:** `#2563eb` (Tailwind blue-600)
 - Colors are extended in `tailwind.config.js` as `primary`, `accent`, `accent-hover`
 - Custom utility classes `.section-padding` and `.container-max` defined in `index.css`
+- **Dark mode** toggle in Header; theme persisted to localStorage, initialized via inline script in index.html
+- **Hero background** uses animated SVG beams (BackgroundBeams.jsx) — pure SVG animations, no extra dependencies
+- **Admin allowlist** hardcoded: `roland@gxit.io`, `roland.baldovino@gmail.com`
+- **Firestore security rules** enforce admin access server-side (not just client check)
+- **Admin page** is standalone (no Header/Footer), has its own "Back to site" link
 
 ### Content Sources
 
@@ -76,4 +104,4 @@ Stored in `public/`:
 
 ### Contact Form
 
-Client-side only with `console.log` placeholder submit. Validates name, email (format check), and message as required fields. No backend wired up.
+Submits to Firestore `contacts` collection via `addDoc` with `serverTimestamp()`. Validates name, email (format check), and message as required fields. Shows submitting/error states. Cloud Function triggers on new documents to send email notification via Nodemailer.

@@ -1,17 +1,11 @@
+import BackgroundBeams from './BackgroundBeams';
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center bg-primary pt-16">
-      {/* Subtle grid overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+    <section className="relative flex min-h-screen items-center bg-primary pt-16 overflow-hidden">
+      <BackgroundBeams />
 
-      <div className="section-padding container-max relative">
+      <div className="section-padding container-max relative z-10">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
             GenX IT Solutions, Inc.

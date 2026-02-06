@@ -19,3 +19,5 @@ Thumbs.db
 # Firebase
 .firebase/
 .firebaserc
+functions/.env
+functions/node_modules/

@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /contacts/{docId} {
+      // Anyone can create a contact submission
+      allow create: if true;
+
+      // Only admin emails can read
+      allow read: if request.auth != null
+        && request.auth.token.email in [
+          'roland@gxit.io',
+          'roland.baldovino@gmail.com'
+        ];
+
+      // No updates or deletes from client
+      allow update, delete: if false;
+    }
+  }
+}

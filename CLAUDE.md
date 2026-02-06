@@ -78,7 +78,7 @@ functions/
 
 ### Key Design Decisions
 
-- **Dark primary (#0f172a)** used for Header, Hero, ERP, and Footer sections; white logo (`gx-it-white.jpg`) on dark backgrounds
+- **Dark primary (#0f172a)** used for Header, Hero, ERP, and Footer sections; white logo (`gx-it-white.png`) on dark backgrounds
 - **Light sections** (gray-50/white) for Services, Work, About, Contact; dark logo (`GX-logo.jpg`) available for light backgrounds
 - **Accent color:** `#2563eb` (Tailwind blue-600)
 - Colors are extended in `tailwind.config.js` as `primary`, `accent`, `accent-hover`
@@ -99,7 +99,7 @@ All factual content comes from PDFs in `references/`:
 ### Logos
 
 Stored in `public/`:
-- `gx-it-white.jpg` — white GX mark on dark background (used in Header + Footer)
+- `gx-it-white.png` — white GX mark on dark background (used in Header + Footer)
 - `GX-logo.jpg` — dark GX mark on white background (used as favicon, OG image)
 
 ### Contact Form

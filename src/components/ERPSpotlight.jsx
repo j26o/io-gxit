@@ -43,7 +43,7 @@ export default function ERPSpotlight() {
         {/* Key metrics */}
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
-            <p className="text-3xl font-bold text-accent">&#8369;1.5&ndash;2M</p>
+            <p className="text-3xl font-bold text-accent">&#8369;2&ndash;4M</p>
             <p className="mt-1 text-sm text-gray-400">Projected Annual Savings</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
@@ -71,7 +71,7 @@ export default function ERPSpotlight() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                Container penalties of &#8369;2,000&ndash;&#8369;6,000/day due to processing delays
+                Container penalties due to processing delays
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />

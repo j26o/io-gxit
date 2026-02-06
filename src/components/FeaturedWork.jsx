@@ -5,16 +5,14 @@ const CLIENTS = [
   { name: 'Philippine Airlines', region: 'PH' },
   { name: 'Coca-Cola FEMSA', region: 'PH' },
   { name: 'Chevron / Caltex', region: 'SEA' },
-  { name: 'Wyeth Philippines', region: 'PH' },
   { name: 'Chi-X Asia Pacific', region: 'APAC' },
   { name: 'Globe Telecom', region: 'PH' },
-  { name: 'DBS Bank', region: 'SG' },
   { name: 'Grab', region: 'SEA' },
   { name: 'Mastercard', region: 'SEA' },
   { name: 'Abbott', region: 'SEA' },
-  { name: 'Singapore Biennale', region: 'SG' },
   { name: 'ARC.xyz', region: 'SG' },
   { name: 'Nexus International School', region: 'SG' },
+  { name: 'Hei', region: 'SG' },
 ];
 
 const HIGHLIGHTS = [

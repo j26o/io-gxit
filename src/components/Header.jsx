@@ -67,7 +67,7 @@ export default function Header() {
         {/* Logo */}
         <a href="#" aria-label="GenX IT Solutions home">
           <img
-            src="/gx-it-white.jpg"
+            src="/gx-it-white.png"
             alt="GenX IT Solutions"
             className="h-10 w-10 rounded object-contain"
           />

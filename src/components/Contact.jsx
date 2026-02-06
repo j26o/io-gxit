@@ -110,19 +110,6 @@ export default function Contact() {
                 <dt className="text-sm font-semibold text-gray-900 dark:text-white">Location</dt>
                 <dd className="mt-1 text-sm text-gray-600 dark:text-gray-400">Manila, Philippines</dd>
               </div>
-              <div>
-                <dt className="text-sm font-semibold text-gray-900 dark:text-white">LinkedIn</dt>
-                <dd className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  <a
-                    href="https://linkedin.com/in/rolandbaldovino"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-accent"
-                  >
-                    /in/rolandbaldovino
-                  </a>
-                </dd>
-              </div>
             </dl>
           </div>
 

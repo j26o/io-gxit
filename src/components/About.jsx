@@ -12,18 +12,7 @@ export default function About() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-600 dark:text-gray-400">
               <p>
-                GenX IT Solutions is founded by Roland Baldovino, a technology leader
-                with over 20 years of experience spanning digital strategy, full-stack
-                development, and project management across the Philippines and Singapore.
-              </p>
-              <p>
-                Roland&rsquo;s career includes leadership roles at TBWA\Group Singapore,
-                where he delivered digital solutions for Singapore Airlines, Singapore Tourism
-                Board, and Caltex. As Co-Founder and CTO of Curious Lab, he led projects
-                for the Asian Development Bank, Coca-Cola FEMSA, Chi-X Asia Pacific, and
-                Wyeth Philippines. As Customer Success Director at Sutrix Group, a global
-                systems integrator, he led integration projects involving Salesforce, Adobe AEM,
-                and AWS for clients including Globe&nbsp;Telecom.
+                GenX IT Solutions is founded by a group of unconventional people from conventional industries. Seeing the immediate need for digital transformation on major SMEs and government agencies in the Philippines, they quickly banded together to provide economical solutions to quickly streamline processes.
               </p>
               <p>
                 GenX IT Solutions brings that APAC-grade delivery capability to small and

@@ -99,10 +99,10 @@ export default function Contact() {
                 <dt className="text-sm font-semibold text-gray-900 dark:text-white">Phone</dt>
                 <dd className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   <a
-                    href="tel:+639171558339"
+                    href="tel:+639175007837"
                     className="transition-colors hover:text-accent"
                   >
-                    +63 917 155 8339
+                    +63 917 500 7837
                   </a>
                 </dd>
               </div>

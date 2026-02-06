@@ -8,17 +8,26 @@ export default function About() {
               About Us
             </p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Built to Deliver for Manila&nbsp;SMEs
+              Enterprise-Grade Tech, SME-Friendly&nbsp;Pricing
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-600 dark:text-gray-400">
               <p>
-                GenX IT Solutions is founded by a group of unconventional people from conventional industries. Seeing the immediate need for digital transformation on major SMEs and government agencies in the Philippines, they quickly banded together to provide economical solutions to quickly streamline processes.
+                GenX IT Solutions was founded by a group of unconventional technologists from
+                conventional industries. Having built platforms for airlines, banks, and
+                multinationals across APAC, we saw a gap: small and medium enterprises in the
+                Philippines needed the same cutting-edge solutions &mdash; but at a price
+                that actually made&nbsp;sense.
               </p>
               <p>
-                GenX IT Solutions brings that APAC-grade delivery capability to small and
-                medium enterprises in Manila. We believe digital transformation shouldn&rsquo;t
-                require enterprise budgets &mdash; just the right expertise, practical
-                methodology, and a partner who&nbsp;delivers.
+                We leverage the latest in cloud-native architecture, AI-driven automation, and
+                modern frameworks to deliver results that rival what the big consultancies charge
+                five times more for. Our lean team, open-source-first philosophy, and Manila-based
+                operations mean you get state-of-the-art technology without the enterprise
+                price&nbsp;tag.
+              </p>
+              <p>
+                The bottom line: world-class technology shouldn&rsquo;t be a luxury.
+                We make it accessible, practical, and&nbsp;affordable.
               </p>
             </div>
           </div>
@@ -29,19 +38,19 @@ export default function About() {
               <ul className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  Agile delivery with Design Thinking &mdash; we solve the right problems first
+                  Open-source-first stack &mdash; cutting-edge tools without licensing bloat
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  Full-stack capability from strategy through deployment and training
+                  Cloud-native on GCP, AWS, or Azure &mdash; pay only for what you use
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  Cloud-native architecture on GCP, AWS, or Azure
+                  AI and automation built in from day one, not added as an afterthought
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  Security and compliance baked in, not bolted on
+                  Transparent, fixed-scope pricing &mdash; no surprise invoices
                 </li>
               </ul>
             </div>
